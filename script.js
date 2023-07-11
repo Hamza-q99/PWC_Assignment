@@ -1,29 +1,42 @@
 
 function onSearchClick(){
-    var lat,long,cityName;
+    var lat,long,city, loadCircle;
 
-    var city = document.getElementById("srchBar").value;
+    city = document.getElementById("srchBar").value;
+    if (city.trim() === "") {
+        alert("Please enter a city name!")
+        return;
+      }
 
-    var loadingCircle = document.getElementById("loadingCircle");
-    loadingCircle.style.display = "block";
+    loadCircle = document.getElementById("loadingCircle");
+    loadCircle.style.display = "block";
 
     $.ajax({
         method: 'GET',
         url: 'https://api.api-ninjas.com/v1/geocoding?city=' + city,
         headers: { 'X-Api-Key': 'wpH3jNefuc2d8yERKUc1ow==RLyuwigUbGC9hvnP'},
         contentType: 'application/json',
+
         success: function(result) {
             console.log(result);
+
+            if (result.length == 0){
+             alert("No result found for the searched city");
+             return;
+            }
+            
             obj = result[0];
             lat = obj.latitude;
             long = obj.longitude;
             updateMap(long, lat);
         },
+
         error: function ajaxError(jqXHR) {
-            console.error('Error: ', jqXHR.responseText);
+            alert('Error: ', jqXHR.responseText);
         },
+
         complete: function () {
-            loadingCircle.style.display = "none";
+            loadCircle.style.display = "none";
           },
     });
 }
