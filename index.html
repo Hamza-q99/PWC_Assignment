@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>PWC Assignment</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css">
+  </head>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
+
+  <body>
+    <h1>Google Maps API</h1>
+    <p>Google Map Api and Gecoding API of ninjas were used</p>
+
+    <iframe
+      id="gmap"
+      width="1000"
+      height="500"
+      style="border:0"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed/v1/view?key=AIzaSyBj6yMvd_WGYAJWvjUWe5H6e8qJgHX2Sqs&center=-33.8569,151.2152&zoom=13"
+    ></iframe>
+
+    <form id="srchFrm">
+      <input type="search" id="srchBar" />
+      <input
+        id="btnSearch"
+        type="button"
+        value="Search"
+        onclick="onSearchClick()"
+      />
+      <div id="loadingCircle"></div>
+    </form>
+
+  </body>
+</html>
